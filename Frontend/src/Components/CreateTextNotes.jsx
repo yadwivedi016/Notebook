@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios'; // Ensure axios is imported
+import api from "../api";
 import '../Styles/CreateNotes.css'
 
 const CreateTextNotes = () => {

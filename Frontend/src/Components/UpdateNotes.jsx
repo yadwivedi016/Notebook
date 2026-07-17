@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 import "../Styles/CreateNotes.css";
 import { useParams, useNavigate } from "react-router-dom";
 import "../Styles/UpdateNotes.css";

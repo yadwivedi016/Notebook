@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 import { Link, useParams } from "react-router-dom";
 import "../Styles/DetailsNotes.css";
 
