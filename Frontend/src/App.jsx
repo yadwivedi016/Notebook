@@ -19,6 +19,7 @@ function App() {
             <Routes>
                 <Route path='/' element={<TextNote />} />
                 <Route path='textnote/' element={<CreateTextNotes />} />
+                <Route path='createlist/' element={<CreateListNotes />} />
                 <Route path='listnote/' element={<ListNote />} />
                 <Route path='notes/:id' element={<DetailailsNotes />} />
                 <Route path='update/:id' element={<UpdateNotes />} />

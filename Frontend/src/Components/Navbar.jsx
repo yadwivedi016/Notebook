@@ -130,7 +130,7 @@ export default function Navbar({
                                 </button>
                                 <button
                                     className="dropdown-item"
-                                    onClick={() => handleDropdownClick("/listnote")}
+                                    onClick={() => handleDropdownClick("/createlist")}
                                 >
                                     List Note
                                 </button>
