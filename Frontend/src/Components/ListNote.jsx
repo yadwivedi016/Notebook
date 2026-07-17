@@ -10,7 +10,7 @@ const ListNote = () => {
 
     const fetchNotes = async () => {
         try {
-            const res = await axios.get("/notes/");
+            const res = await api.get("/notes/");
 
             const notesData = Array.isArray(res.data)
                 ? res.data
@@ -55,7 +55,7 @@ const ListNote = () => {
         if (!window.confirm("Delete this note?")) return;
 
         try {
-            await axios.delete(`/notes/${id}/`);
+            await api.delete(`/notes/${id}/`);
             setSelectedNote(null);
             fetchNotes();
         } catch (err) {
