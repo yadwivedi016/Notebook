@@ -250,7 +250,7 @@ body {
     background: var(--accent-soft);
     color: var(--accent-dark);
 }
-@import url("./variables.css");
+@import "../../variables.css";
 
 * {
     margin: 0;

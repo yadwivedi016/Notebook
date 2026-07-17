@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import "../Styles/CreateListNotes.css";
-import axios from "axios";
+import api from "../api";
 
 let idCounter = 0;
 const createItem = () => ({ id: ++idCounter, text: "", completed: false });
@@ -81,8 +81,7 @@ const CreateListNotes = () => {
     }
 
     try {
-        const response = await axios.post(
-            "http://127.0.0.1:8000/api/notes/",
+        const response = await api.post("/notes/",
             {
                 title: title,
                 content: {

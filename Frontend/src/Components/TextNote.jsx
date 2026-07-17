@@ -11,7 +11,7 @@ const TextNote = () => {
     // Fetch all notes
     const fetchNotes = async () => {
     try {
-        const res = await axios.get("http://127.0.0.1:8000/api/notes/");
+        const res = await api.get("/notes/");
 
         const notesData = Array.isArray(res.data)
             ? res.data
@@ -51,7 +51,7 @@ const TextNote = () => {
         if (!window.confirm("Delete this note?")) return;
 
         try {
-            await axios.delete(`http://127.0.0.1:8000/api/notes/${id}/`);
+            await api.delete(`/notes/${id}/`);
             setSelectedNote(null);
             fetchNotes();
         } catch (err) {

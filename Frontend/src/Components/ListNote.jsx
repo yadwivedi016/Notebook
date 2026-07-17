@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 import { Link } from "react-router-dom";
 import "../Styles/TextNote.css";
 
@@ -10,7 +10,7 @@ const ListNote = () => {
 
     const fetchNotes = async () => {
         try {
-            const res = await axios.get("http://127.0.0.1:8000/api/notes/");
+            const res = await axios.get("/notes/");
 
             const notesData = Array.isArray(res.data)
                 ? res.data
@@ -55,7 +55,7 @@ const ListNote = () => {
         if (!window.confirm("Delete this note?")) return;
 
         try {
-            await axios.delete(`http://127.0.0.1:8000/api/notes/${id}/`);
+            await axios.delete(`/notes/${id}/`);
             setSelectedNote(null);
             fetchNotes();
         } catch (err) {
@@ -78,9 +78,12 @@ const ListNote = () => {
 
         try {
             // Update via Django API PATCH
-            const res = await axios.patch(`http://127.0.0.1:8000/api/notes/${note.id}/`, {
-                content: updatedContent
-            });
+            const res = await api.patch(
+                `/notes/${note.id}/`,
+                {
+                    content: updatedContent
+                }
+            );
 
             // Update UI state locally immediately
             setNotes(prevNotes => prevNotes.map(n => n.id === note.id ? { ...n, content: updatedContent } : n));
@@ -135,23 +138,23 @@ const ListNote = () => {
                         </div>
 
                         <div className="card-footer">
-    <span>List</span>
+                            <span>List</span>
 
-    <div
-        className="note-card-actions"
-        onClick={(e) => e.stopPropagation()}
-        /* Added flex layout alignment with 15px gap spacing */
-        style={{ display: "flex", alignItems: "center", gap: "15px" }} 
-    >
-        <Link to={`/updatelist/${note.id}`} style={{ textDecoration: "none" }}>
-            ✏️
-        </Link>
+                            <div
+                                className="note-card-actions"
+                                onClick={(e) => e.stopPropagation()}
+                                /* Added flex layout alignment with 15px gap spacing */
+                                style={{ display: "flex", alignItems: "center", gap: "15px" }}
+                            >
+                                <Link to={`/updatelist/${note.id}`} style={{ textDecoration: "none" }}>
+                                    ✏️
+                                </Link>
 
-        <button onClick={() => deleteNote(note.id)} style={{ background: "none", border: "none", cursor: "pointer" }}>
-            🗑️
-        </button>
-    </div>
-</div>
+                                <button onClick={() => deleteNote(note.id)} style={{ background: "none", border: "none", cursor: "pointer" }}>
+                                    🗑️
+                                </button>
+                            </div>
+                        </div>
 
                     </div>
                 ))}
@@ -209,7 +212,7 @@ const ListNote = () => {
                                             <span className="completed">{item.text}</span>
                                         </div>
                                     ))}
-               
+
                                 </div>
                             )}
                         </div>

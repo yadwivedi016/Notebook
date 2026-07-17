@@ -28,9 +28,7 @@ const UpdateListNotes = () => {
 
     const fetchNote = async () => {
         try {
-            const res = await axios.get(
-                `http://127.0.0.1:8000/api/notes/${id}/`
-            );
+            const res = await api.get(`/notes/${id}/`);
 
             setTitle(res.data.title);
 
@@ -124,8 +122,7 @@ const UpdateListNotes = () => {
         }
 
         try {
-            await axios.put(
-                `http://127.0.0.1:8000/api/notes/${id}/`,
+            await api.put(`/notes/${id}/`,
                 {
                     title,
                     content: {

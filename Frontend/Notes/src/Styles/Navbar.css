@@ -1,0 +1,285 @@
+@import "../../variables.css";
+
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    /* Soft ambient blur effect behind transparent navbar surfaces */
+    backdrop-filter: blur(8px); 
+}
+
+.navbar-inner {
+    max-width: 1360px;
+    margin: auto;
+    padding: 12px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Brand Grouping */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.navbar-brand-mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #fff;
+    font-family: var(--font-display), system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px var(--accent-soft);
+}
+
+.navbar-brand-text {
+    font-family: var(--font-display), system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 19px;
+    color: var(--ink);
+    letter-spacing: -.015em;
+}
+
+/* Links Layout */
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 12px;
+}
+
+.navbar-link {
+    text-decoration: none;
+    color: var(--ink-soft);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s ease;
+}
+
+.navbar-link:hover {
+    background: var(--paper);
+    color: var(--ink);
+}
+
+.navbar-link-active {
+    background: var(--accent-soft);
+    color: var(--accent-soft-text);
+    font-weight: 600;
+}
+
+/* Control Actions Bar */
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-grow: 1;
+    justify-content: flex-end;
+}
+
+/* Fluid Flex-Search Box avoids shifting neighbors */
+.navbar-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    padding: 8px 16px;
+    width: 100%;
+    max-width: 240px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar-search:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+    max-width: 280px;
+}
+
+.navbar-search-icon {
+    color: var(--ink-faint);
+    flex-shrink: 0;
+    transition: color 0.2s ease;
+}
+
+.navbar-search:focus-within .navbar-search-icon {
+    color: var(--accent);
+}
+
+.navbar-search input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: var(--font-body), system-ui, sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    width: 100%;
+}
+
+.navbar-search input::placeholder {
+    color: var(--ink-faint);
+}
+
+/* Action Button Container & Chevron Dynamics */
+.navbar-new-btn {
+    border: none;
+    background: var(--accent);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-family: var(--font-body), system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar-new-btn:hover {
+    background: var(--accent-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--accent-soft);
+}
+
+.navbar-new-btn:active {
+    transform: translateY(0);
+}
+
+.navbar-new-btn .chevron-icon {
+    transition: transform 0.2s ease;
+}
+
+.navbar-new-btn.active .chevron-icon {
+    transform: rotate(180deg);
+}
+
+/* Custom Clean Dropdown */
+.navbar-dropdown {
+    position: relative;
+}
+
+.navbar-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 200px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    z-index: 1000;
+    transform-origin: top right;
+    animation: dropdownFade 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 4px;
+}
+
+.dropdown-item {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--ink);
+    padding: 10px 14px;
+    text-align: left;
+    font-family: var(--font-body), system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.15s ease;
+}
+
+.dropdown-item:hover {
+    background: var(--paper);
+    color: var(--accent);
+}
+
+/* Removed dividing border to make items look cohesive within unified clean menus */
+.dropdown-item:not(:last-child) {
+    border-bottom: none;
+    margin-bottom: 2px;
+}
+
+@keyframes dropdownFade {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Responsive Structural Layout Overhaul */
+@media (max-width: 768px) {
+    .navbar-inner {
+        padding: 12px 20px;
+        gap: 16px;
+    }
+
+    .navbar-links {
+        margin-left: 0;
+    }
+
+    .navbar-actions {
+        width: 100%;
+        order: 3;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    .navbar-search {
+        max-width: none;
+        flex-grow: 1;
+    }
+
+    .navbar-search:focus-within {
+        max-width: none;
+    }
+
+    .navbar-dropdown {
+        flex-shrink: 0;
+    }
+
+    .navbar-dropdown-menu {
+        width: 200px;
+        right: 0;
+        left: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .navbar-links {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .navbar-link {
+        padding: 6px 12px;
+    }
+}

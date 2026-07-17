@@ -20,7 +20,7 @@ const CreateTextNotes = () => {
 
         try {
             setError(null); // Clear any previous errors
-            const response = await axios.post('http://127.0.0.1:8000/api/notes/', {
+            const response = await api.post("/notes/", {
                 title,
                 content,
                 type

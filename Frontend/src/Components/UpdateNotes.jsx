@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../Styles/CreateNotes.css";
-import { useParams,useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "../Styles/UpdateNotes.css";
 
 const UpdateNotes = () => {
@@ -16,15 +16,13 @@ const UpdateNotes = () => {
     useEffect(() => {
         const fetchNote = async () => {
             try {
-                const res = await axios.get(
-                    `http://127.0.0.1:8000/api/notes/${id}/`
-                );
+                const res = await api.get(`/notes/${id}/`);
 
                 setTitle(res.data.title);
                 setContent(res.data.content);
                 setType(res.data.type);
 
-                
+
             } catch (err) {
                 setError("Unable to load note.");
             }
@@ -44,8 +42,8 @@ const UpdateNotes = () => {
         try {
             setError(null);
 
-            const res = await axios.put(
-                `http://127.0.0.1:8000/api/notes/${id}/`,
+            const res = await api.put(
+                `/notes/${id}/`,
                 {
                     title,
                     content,
