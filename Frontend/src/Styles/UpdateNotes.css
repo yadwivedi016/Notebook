@@ -1,0 +1,170 @@
+@import "../../variables.css";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--paper);
+    font-family: var(--font-body);
+    color: var(--ink);
+}
+
+/* Amber accent, scoped to this page only — everything else (paper,
+   ink, radius, fonts) still comes from the shared tokens in variables.css */
+.notes-page {
+    --accent: #a3672f;
+    --accent-dark: #8a5427;
+    --accent-soft: #faf0e4;
+    --accent-soft-text: #8a5427;
+
+    min-height: 100vh;
+    padding: 56px 20px;
+}
+
+.notes-container {
+    max-width: 900px;
+    margin: auto;
+}
+
+.notes-card {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 48px;
+}
+
+/* small "editing" tag so it reads differently from the create page */
+.notes-card::before {
+    content: "Editing";
+    position: absolute;
+    top: 0;
+    right: 40px;
+    transform: translateY(-50%);
+    background: var(--accent-soft);
+    color: var(--accent-soft-text);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+}
+
+.notes-title {
+    font-family: var(--font-display);
+    font-size: 2.1rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+}
+
+.notes-subtitle {
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    margin-bottom: 40px;
+}
+
+.form-group {
+    margin-bottom: 28px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 9px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    transition: border-color .18s ease, background .18s ease, box-shadow .18s ease;
+    outline: none;
+}
+
+.form-group input {
+    padding: 15px 16px;
+    font-family: var(--font-display);
+    font-size: 19px;
+}
+
+.form-group textarea {
+    min-height: 440px;
+    padding: 22px 24px;
+    resize: vertical;
+    line-height: 1.9;
+    background-image: repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 37px,
+        var(--border-soft) 38px
+    );
+    background-attachment: local;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--ink-faint);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--accent);
+    background: var(--surface);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 12px;
+}
+
+.save-btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 13px 30px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 14.5px;
+    font-weight: 600;
+    letter-spacing: .01em;
+    cursor: pointer;
+    transition: background .18s ease, transform .18s ease;
+}
+
+.save-btn:hover {
+    background: var(--accent-dark);
+    transform: translateY(-1px);
+}
+
+.save-btn:active {
+    transform: translateY(0);
+}
+
+.error {
+    background: var(--danger-soft);
+    border: 1px solid var(--danger-border);
+    color: var(--danger);
+    font-size: 14px;
+    padding: 13px 18px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 24px;
+}

@@ -1,0 +1,105 @@
+@import "../../variables.css";
+
+.list-note {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list-note-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.list-note-item:last-child {
+    border-bottom: none;
+}
+
+.list-note-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent);
+    pointer-events: none;
+}
+
+.list-note-item span {
+    flex: 1;
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.6;
+    word-break: break-word;
+}
+
+.list-note-item.completed span {
+    color: var(--ink-soft);
+    text-decoration: line-through;
+}
+
+.list-note-preview {
+    max-height: 130px;
+    overflow: hidden;
+}
+
+.list-note-full {
+    max-height: 100%;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+/* List Note Styles */
+
+.list-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+}
+
+.list-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent);
+    pointer-events: none;
+}
+
+.list-item span {
+    color: var(--ink);
+    line-height: 1.6;
+    word-break: break-word;
+}
+
+.list-item span.completed {
+    color: var(--ink-soft);
+    text-decoration: line-through;
+}
+
+.note-preview .list-item {
+    padding: 5px 0;
+}
+
+.modal-content .list-item {
+    padding: 10px 0;
+}
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 15px;
+}
+
+.note-card-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.type-badge {
+    background-color: #f0f0f0;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}

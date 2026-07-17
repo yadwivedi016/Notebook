@@ -1,0 +1,112 @@
+@import "../../variables.css";
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--paper, #faf9f6);
+    font-family: var(--font-body, "Inter", sans-serif);
+    color: var(--ink, #23221e);
+}
+
+.notes-page {
+    min-height: 100vh;
+    padding: 56px 20px;
+}
+
+.notes-container {
+    max-width: 900px;
+    margin: auto;
+}
+
+.notes-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 48px;
+}
+
+.notes-title {
+    font-family: var(--font-display);
+    font-size: 2.1rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.notes-subtitle {
+    color: var(--ink-soft);
+    margin-bottom: 40px;
+}
+
+.form-group {
+    margin-bottom: 28px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--ink-soft);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    padding: 16px;
+    outline: none;
+}
+
+.form-group textarea {
+    min-height: 400px;
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+/* IMPORTANT: renamed from .actions */
+.note-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.save-btn {
+    display: inline-block;
+    min-width: 180px;
+    padding: 14px 30px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.save-btn:hover {
+    background: var(--accent-dark);
+}
+
+.error {
+    background: var(--danger-soft);
+    color: var(--danger);
+    border: 1px solid var(--danger-border);
+    padding: 14px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
